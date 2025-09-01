@@ -1,0 +1,10 @@
+Backend tech stack - 
+Express + Axios for the api call handling
+also used logging middleware as an internal module called 
+
+A simple url shortener that uses random module to generate 6 char shortcodes 
+and currently stores the data in memory due to time constraints, ideally needing a Db
+
+Also for the expiry im using calls to the shortcode to delete them, this should be done with
+cron job ideally
+
