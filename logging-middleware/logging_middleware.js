@@ -12,16 +12,15 @@ const Log = async (stack, level, package, message) => {
             message: message
         };
         
-        const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJhZGl0aHlhMTQyNTVAZ21haWwuY29tIiwiZXhwIjoxNzU2NzAzNjE2LCJpYXQiOjE3NTY3MDI3MTYsImlzcyI6IkFmZm9yZCBNZWRpY2FsIFRlY2hub2xvZ2llcyBQcml2YXRlIExpbWl0ZWQiLCJqdGkiOiJkNTE5NjM0Ny03YWUxLTQwMzktYWYyYi04ZjA5NDEyNjYwY2EiLCJsb2NhbGUiOiJlbi1JTiIsIm5hbWUiOiJhZGl0aHlhIGciLCJzdWIiOiI0N2I0MGRkYy03YzgxLTQwODItOGNmOC0yODNlOWJmM2ZkMDgifSwiZW1haWwiOiJhZGl0aHlhMTQyNTVAZ21haWwuY29tIiwibmFtZSI6ImFkaXRoeWEgZyIsInJvbGxObyI6IjIyY3NhMDMiLCJhY2Nlc3NDb2RlIjoiZHFYdXdaIiwiY2xpZW50SUQiOiI0N2I0MGRkYy03YzgxLTQwODItOGNmOC0yODNlOWJmM2ZkMDgiLCJjbGllbnRTZWNyZXQiOiJyZkd6RlBzTllrZVl1Z3lnIn0.xAodNfC-ldaXmkeN6PBeEXDgu-FJwef7t-YsjFIE2gw";
+        const ID = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJhZGl0aHlhMTQyNTVAZ21haWwuY29tIiwiZXhwIjoxNzU2NzA4MDIwLCJpYXQiOjE3NTY3MDcxMjAsImlzcyI6IkFmZm9yZCBNZWRpY2FsIFRlY2hub2xvZ2llcyBQcml2YXRlIExpbWl0ZWQiLCJqdGkiOiJjOGYzNDc1Yy01ZDFhLTRkNzUtYjBkNy00ODMyZDFmMjBiZTciLCJsb2NhbGUiOiJlbi1JTiIsIm5hbWUiOiJhZGl0aHlhIGciLCJzdWIiOiI0N2I0MGRkYy03YzgxLTQwODItOGNmOC0yODNlOWJmM2ZkMDgifSwiZW1haWwiOiJhZGl0aHlhMTQyNTVAZ21haWwuY29tIiwibmFtZSI6ImFkaXRoeWEgZyIsInJvbGxObyI6IjIyY3NhMDMiLCJhY2Nlc3NDb2RlIjoiZHFYdXdaIiwiY2xpZW50SUQiOiI0N2I0MGRkYy03YzgxLTQwODItOGNmOC0yODNlOWJmM2ZkMDgiLCJjbGllbnRTZWNyZXQiOiJyZkd6RlBzTllrZVl1Z3lnIn0.cG1SqeBF6Cvs9ybBZLgca5W6PjK1exFOT3d3qAFEmNo";
 
-        const response = await axios.post(LOG_API_URL, logData, {
+        const response = await axios.post(LOG_API_URL, JSON.stringify(logData), {
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ID}`
             },
-            timeout: 5000
         });
-        
+
         return {
             success: true,
             logID: response.data.logID,
@@ -41,6 +40,5 @@ const Log = async (stack, level, package, message) => {
 
 
 module.exports = {
-    Log,
-    test
+    Log
 };
